@@ -39,6 +39,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* MoveAction;
 
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputAction* RotateAction;
+
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* CameraComp;
 
@@ -48,5 +51,9 @@ public:
 	UPROPERTY(EditAnywhere)
 	float Speed = 300.0f;
 
+	UPROPERTY(EditAnywhere)
+	float RotateSpeed = 300.0f;
+
 	void MoveInput(const FInputActionValue& Value);
+	void RotateInput(const FInputActionValue& Value);
 };
