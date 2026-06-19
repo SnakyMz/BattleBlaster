@@ -62,6 +62,6 @@ void ATank::RotateInput(const FInputActionValue& Value)
 {
 	float RotateValue = Value.Get<float>();
 	FRotator DeltaRotation = FRotator(0.0f, 0.0f, 0.0f);
-	DeltaRotation.Yaw = RotateValue * RotateSpeed * UGameplayStatics::GetWorldDeltaSeconds(GetWorld());
+	DeltaRotation.Yaw = RotateValue * RotateSpeed * GetWorld()->GetDeltaSeconds();
 	AddActorLocalRotation(DeltaRotation, true);
 }
