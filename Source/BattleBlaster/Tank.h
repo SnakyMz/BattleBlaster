@@ -42,6 +42,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* RotateAction;
 
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputAction* FireAction;
+
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* CameraComp;
 
