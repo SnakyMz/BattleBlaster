@@ -21,6 +21,8 @@ void AProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
+	
 }
 
 // Called every frame
@@ -30,3 +32,13 @@ void AProjectile::Tick(float DeltaTime)
 
 }
 
+void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
+{
+	AActor* MyOwner = GetOwner();
+	if (MyOwner && OtherActor && OtherActor != MyOwner && OtherActor != this)
+	{
+		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwner->GetInstigatorController(), this, UDamageType::StaticClass());
+	}
+
+	Destroy();
+}
