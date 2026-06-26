@@ -57,7 +57,13 @@ public:
 	UPROPERTY(EditAnywhere)
 	float RotateSpeed = 300.0f;
 
+	UPROPERTY(VisibleAnywhere)
+	bool IsAlive = true;
+
+	APlayerController* PlayerController;
+
 	void MoveInput(const FInputActionValue& Value);
 	void RotateInput(const FInputActionValue& Value);
 	void HandleDestruction();
+	void SetInput(bool Enabled);
 };

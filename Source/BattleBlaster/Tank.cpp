@@ -19,7 +19,9 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
+	PlayerController = Cast<APlayerController>(Controller);
+
+	if (PlayerController)
 	{
 		if (ULocalPlayer* LocalPlayer = PlayerController->GetLocalPlayer())
 		{
@@ -36,7 +38,6 @@ void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	APlayerController* PlayerController = Cast<APlayerController>(GetController());
 	if (PlayerController)
 	{
 		FHitResult HitResult;
@@ -78,5 +79,23 @@ void ATank::HandleDestruction()
 {
 	Super::HandleDestruction();
 
-	UE_LOG(LogTemp, Display, TEXT("Tank Destroyed Defeat!"));
+	IsAlive = false;
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
+	SetInput(false);
+}
+
+void ATank::SetInput(bool Enabled)
+{
+	if (!PlayerController) return;
+
+	if (Enabled)
+	{
+		EnableInput(PlayerController);
+	}
+	else
+	{
+		DisableInput(PlayerController);
+	}
+	PlayerController->bShowMouseCursor = Enabled;
 }
