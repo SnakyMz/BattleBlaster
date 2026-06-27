@@ -40,4 +40,5 @@ void ABasePawn::Fire()
 void ABasePawn::HandleDestruction()
 {
 	UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), DeathParticles, GetActorLocation(), GetActorRotation());
+	UGameplayStatics::PlaySoundAtLocation(GetWorld(), DeathSound, GetActorLocation());
 }
