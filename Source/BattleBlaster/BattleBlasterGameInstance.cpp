@@ -1,8 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Kismet/GameplayStatics.h"
 
 #include "BattleBlasterGameInstance.h"
+#include "Kismet/GameplayStatics.h"
 
 void UBattleBlasterGameInstance::ChangeLevel(int32 Index)
 {
