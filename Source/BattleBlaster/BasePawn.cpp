@@ -39,5 +39,5 @@ void ABasePawn::Fire()
 
 void ABasePawn::HandleDestruction()
 {
-	// Add Sounds effects and Visual effects
+	UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), DeathParticles, GetActorLocation(), GetActorRotation());
 }
